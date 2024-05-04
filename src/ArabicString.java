@@ -4,7 +4,23 @@ public class ArabicString implements CalcString{
         try{
             int a = (int)bytes[0]-'0';
             byte operation = bytes[1];
-            int b = bytes[2]-'0';
+            int b = bytes[2] - '0';
+            boolean firstArgumentIsTwoDigit = false;
+            if ((a==1) && (operation == '0'))//if first argument is two-digit
+            {
+                a = 10;
+                operation = bytes[2];
+                b = bytes[3]-'0';
+                firstArgumentIsTwoDigit = true;
+            }
+            if ((b==1) && (((bytes[3] == '0') && (!firstArgumentIsTwoDigit))
+                    || ((firstArgumentIsTwoDigit)&&(bytes[4] == '0')) ) )
+            {
+                b = 10;
+                if (firstArgumentIsTwoDigit) operation = bytes[2];
+                else operation = bytes[1];
+            }
+            if ((a > 10) || (b > 10)) throw new Exception("Too big numbers!");
             switch (operation) {
                 case (43)://plus
                     return Integer.toString(a + b);
