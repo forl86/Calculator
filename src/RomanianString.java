@@ -4,12 +4,14 @@ public class RomanianString implements  CalcString{
         boolean result = false;
         try{
             if ((bytes[0] == 88) || (bytes[0] == 86) || (bytes[0] == 73)) {
+                result = true;//1,2,3,4,5,6,7,8,9,10
                 for(byte b: bytes)
                 {
-                        int i = b;
-                        if((0<i) && (i<11)) throw new Exception("Wrong Format!");
+                        if((47<b) && (b<57)) {
+                            throw new Exception("Wrong Format!");
+                        }
                 }
-                result = true;//1,2,3,4,5,6,7,8,9,10
+
             }
         }catch(Exception e){
             System.out.println(e.getMessage());
