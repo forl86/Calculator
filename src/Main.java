@@ -10,24 +10,24 @@ public class Main {
         byte[] bytes = new byte[10];
         int nBytesRead = 0;
         String calcString = "";
-        try
-        {
+        try {
             nBytesRead = System.in.read(bytes);
-            if( RomanianString.IsRomanian(bytes)) {
+            if (bytes[0] == 45) throw new Exception("First argument must be greater!\n");
+            if (RomanianString.IsRomanian(bytes)) {
                 //Romanian
                 RomanianString romanianString = new RomanianString();
                 calcString = romanianString.Parse(bytes);
-            }
-            else
-            {
+            } else {
                 //Arabic
                 ArabicString arabicString = new ArabicString();
                 calcString = arabicString.Parse(bytes);
             }
         }
-        catch (IOException ioe){
-            System.out.println(ioe.getMessage());
+        catch (Exception e){
+            System.out.println(e.getMessage());
         }
+
+
         System.out.println(calcString);
 //        System.out.println(bytes.toString());
 //        for(byte b:bytes){

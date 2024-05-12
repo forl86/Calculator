@@ -7,7 +7,7 @@ public class ArabicString implements CalcString{
             int b = bytes[2] - '0';
             boolean firstArgumentIsTwoDigit = false;
             boolean secondArgumentIsTwoDigit = false;
-            if (bytes[0] == 45) throw new Exception("First argument must be greater!\n");
+
             if ((a==1) && (operation == '0'))//if first argument is 10
             {
                 a = 10;
