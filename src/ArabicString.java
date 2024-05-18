@@ -26,14 +26,16 @@ public class ArabicString implements CalcString{
             }else if ( firstArgumentIsTwoDigit )
             {
                 operation = bytes[2];
-                b = bytes[3];
-                if (bytes[4] != 10) secondArgumentIsTwoDigit = true;
+                b = bytes[3];//here add another condition
+                if((bytes[4] != 10) && (bytes[4] != 43) && (bytes[4] != 45) && (bytes[4] !=42) && (bytes[4] != 47)) secondArgumentIsTwoDigit = true;
                 if( (secondArgumentIsTwoDigit) && ((b > 1) || (bytes[4]-'0' > 0)) ) throw new Exception("Second argument is too big!\n");
+                if (bytes[5] != 10) throw new Exception("Too many arguments!");
             }else if ( !firstArgumentIsTwoDigit){
                 operation = bytes[1];
                 b = bytes[2];
-                if (bytes[3] != 10) secondArgumentIsTwoDigit = true;
+                if((bytes[3] != 10) && (bytes[3] != 43) && (bytes[3] != 45) && (bytes[3] != 42) && (bytes[3] != 47)) secondArgumentIsTwoDigit = true;
                 if( (secondArgumentIsTwoDigit) && ((b > 1) || (bytes[3]-'0' > 0) )) throw new Exception("Second argument is too big!\n");
+                if (bytes[4] != 10 ) throw new Exception("Too many arguments!");
             }
 
             if ((a > 10) || (b > 10)) throw new Exception("Too big numbers!");
