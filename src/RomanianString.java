@@ -1,17 +1,13 @@
 public class RomanianString implements  CalcString{
 
-    public static boolean IsRomanian(byte[] bytes) {
+    public static boolean IsRomanian(byte[] bytes, int size) {
         boolean result = false;
         try{
-            if ((bytes[0] == 88) || (bytes[0] == 86) || (bytes[0] == 73)) {
-                result = true;//1,2,3,4,5,6,7,8,9,10
-                for(byte b: bytes)
-                {
-                        if((47<b) && (b<57)) {
-                            throw new Exception("Wrong Format!");
-                        }
+            for (int i = 0; i < size; i++) {
+                if ((bytes[i] == 88) || (bytes[i] == 86) || (bytes[i] == 73)) {
+                    result = true;//1,2,3,4,5,6,7,8,9,10
+                    break;
                 }
-
             }
         }catch(Exception e){
             System.out.println(e.getMessage());
@@ -44,36 +40,72 @@ public class RomanianString implements  CalcString{
         return -1;
     }
     public static String ConvertToRomanian(int a){
-        switch (a) {
+        String result = "";
+        int q = a / 10;
+        int r = a % 10;
+        int i = 0;
+        switch (q) {
+            case (10):
+                result = result.concat("C");
+                break;
+            case (9):
+                result = result.concat("XC");
+                break;
+            case (8):
+                result = result.concat("LXXX");
+                break;
+            case (7):
+                result = result.concat("LXX");
+                break;
+            case (6):
+                result = result.concat("LX");
+                break;
+            case (5):
+                result = result.concat("L");
+                break;
+            case (4):
+                result = result.concat("XL");
+                break;
+            case (3):
+                result = result.concat("XXX");
+                break;
+            case (2):
+                result = result.concat("XX");
+                break;
             case (1):
-                return "I";
-            case(2):
-                return "II";
-            case(3):
-                return "III";
-            case(4):
-                return "IV";
-            case(5):
-                return "V";
-            case(6):
-                return "VI";
-            case(7):
-                return "VII";
-            case(8):
-                return "VIII";
-            case(9):
-                return "IX";
-            case(10):
-                return "X";
-            case(11):
-                return "XI";
-            case(12):
-                return "XII";
-            case(13):
-                return "XIII";
-
+                result = result.concat("X");
+            case (0):
         }
-        return "III";
+        switch (r) {
+            case (1):
+                result = result.concat("I");
+                break;
+            case(2):
+                result = result.concat("II");
+                break;
+            case(3):
+                result = result.concat("III");
+                break;
+            case(4):
+                result = result.concat("IV");
+                break;
+            case(5):
+                result = result.concat("V");
+                break;
+            case(6):
+                result = result.concat("VI");
+                break;
+            case(7):
+                result = result.concat("VII");
+                break;
+            case(8):
+                result = result.concat("VIII");
+                break;
+            case(9):
+                result = result.concat("IX");
+                break;
+        }
+        return result;
     }
     @Override
     public String Parse(byte[] bytes) {
