@@ -50,7 +50,7 @@ public class Main {
                     else //I
                         return 1;
                 }
-                else if(b[i] == 83)
+                else if(b[i] == 86)
                 {
                     if(b[i+1] == 73)
                     {
