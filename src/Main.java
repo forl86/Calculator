@@ -125,7 +125,10 @@ public class Main {
                     break;
                 case (45)://minus
                     if(RomanianString.IsRomanian(bytes,nBytesRead)){
-                        System.out.println(RomanianString.ConvertToRomanian(a-b));
+                        if(a <= b)
+                            throw new Exception("Negative result in Romanian system can not be calculated!");
+                        else
+                            System.out.println(RomanianString.ConvertToRomanian(a-b));
                     }
                     else
                         System.out.println(Integer.toString(a - b));
