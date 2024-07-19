@@ -167,7 +167,7 @@ public class Main {
 
 
         System.out.println(calcString);
-//        System.out.println(bytes.toString());
+        System.out.println("This string to test git");
 //        for(byte b:bytes){
 //            System.out.println(b);
 //        }
